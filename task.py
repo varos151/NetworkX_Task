@@ -13,6 +13,14 @@ def calculate_node_degrees(edges: list) -> dict:
 
 def find_shortest_path(edges: list, source: str, target: str) -> list:
     """Sub-task 2: Find the shortest path between source and target nodes."""
+    if not edges:
+        return {}
+    g = nx.Graph()
+    g.add_edges_from(edges)
+    try:
+        return nx.shortest_path(g, source=source, target=target)
+    except (nx.NetworkXNoPath, nx.NodeNotFound):
+        return []
     pass
 
 def count_connected_components(edges: list) -> int:
